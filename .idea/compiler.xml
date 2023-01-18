@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-med" />
+        <module name="med-API-main" />
         <module name="api" />
       </profile>
     </annotationProcessing>
@@ -16,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api" options="-parameters" />
       <module name="api-med" options="-parameters" />
+      <module name="med-API-main" options="-parameters" />
     </option>
   </component>
 </project>
