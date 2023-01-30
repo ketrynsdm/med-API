@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("medicos")
-
+@RequestMapping("/api/medico/")
 public class MedicoController {
     @Autowired
     private MedicoRepository repository;
 
-    @PostMapping
+    @PostMapping("/cadastro")
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroMedico dados, UriComponentsBuilder uriBuilder){
         var medico = new Medico(dados);
@@ -29,7 +28,7 @@ public class MedicoController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoMedico(medico));
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<Page<DadosListagemMedico>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         var page = repository.findAll(paginacao).map(DadosListagemMedico::new);
         return ResponseEntity.ok(page);
